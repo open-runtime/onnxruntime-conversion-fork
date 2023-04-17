@@ -2706,7 +2706,11 @@ static constexpr OrtApi ort_api_1_to_15 = {
     &OrtApis::Logger_GetLoggingSeverityLevel,
     &OrtApis::KernelInfoGetConstantInput_tensor,
     &OrtApis::CastTypeInfoToOptionalTypeInfo,
-    &OrtApis::GetOptionalContainedTypeInfo
+    &OrtApis::GetOptionalContainedTypeInfo,
+    &OrtApis::CreateROCMProviderOptions,
+    &OrtApis::UpdateROCMProviderOptions,
+    &OrtApis::GetROCMProviderOptionsAsString,
+    &OrtApis::ReleaseROCMProviderOptions
 };
 
 // Asserts to do a some checks to ensure older Versions of the OrtApi never change (will detect an addition or deletion but not if they cancel out each other)
