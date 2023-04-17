@@ -16,6 +16,7 @@
 #include <string>
 #include <codecvt>
 #include <locale>
+#include <iostream>
 
 #ifdef USE_DNNL
 #include "core/providers/dnnl/dnnl_provider_factory.h"
@@ -97,6 +98,9 @@ TEST_P(ModelTest, Run) {
   ASSERT_NE(pos, std::string::npos);
   std::string provider_name = ToUTF8String(param.substr(0, pos));
   std::basic_string<ORTCHAR_T> model_path = param.substr(pos + 1);
+  if (model_path.find(ORT_TSTR("resnet18-v2-7")) > 0) {
+    std::cout << "resnet18-v2-7 path:" << model_path.c_str() <<"\n";
+  }
   double per_sample_tolerance = 1e-3;
   double relative_per_sample_tolerance = 1e-3;
 
