@@ -55,6 +55,7 @@ from transformers import (
     T5Config,
     T5ForConditionalGeneration,
     T5Tokenizer,
+    AutoTokenizer
 )
 
 from onnxruntime import GraphOptimizationLevel, InferenceSession, SessionOptions, get_available_providers
@@ -2437,7 +2438,7 @@ def test_t5_model(args: argparse.Namespace, sentences: Optional[List[str]] = Non
         logger.debug("Skipping parity test as prefix vocab mask is not implemented by Hugging Face")
         return None
 
-    tokenizer = T5Tokenizer.from_pretrained(args.model_name_or_path, cache_dir=args.cache_dir)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path, cache_dir=args.cache_dir)
     tokenizer.padding_side = "left"
 
     if args.model_type == "t5":
